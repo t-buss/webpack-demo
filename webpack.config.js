@@ -1,3 +1,4 @@
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
@@ -5,14 +6,28 @@ const path = require('path');
 
 module.exports = {
 	mode: 'development',
-	entry: './src/index.js',
+	entry: './src/main.js',
 	output: {
 		filename: 'main.js',
 		path: path.resolve(__dirname, 'dist')
 	},
+	module: {
+		rules: [
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader'
+			},
+			{
+				test: /\.js$/,
+				loader: 'babel-loader'
+			}
+		]
+	},
 	plugins: [
+		new VueLoaderPlugin(),
 		new HtmlWebpackPlugin({
-			inlineSource: '.(js|css)$'
+			inlineSource: '.(js|css)$',
+			template: 'src/index_template.html'
 		}),
 		new HtmlWebpackInlineSourcePlugin()
 	]
