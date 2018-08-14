@@ -7,12 +7,9 @@
         <input type="number" v-model="maxTime" @change="updateFunc">
 
         <label>Test class outcome</label>
-        <select v-model="testStatus" @change="updateFunc">
-            <option value="all" selected>All test classes</option>
-            <option value="success">Only fully successful test classes</option>
-            <option value="failure">Only fully failed test classes</option>
-            <option value="partial">Only partially failed test classes</option>
-        </select>
+        <input type="checkbox" @change="updateFunc" v-model="includeSuccess"> Success
+        <input type="checkbox" @change="updateFunc" v-model="includePartial"> Partial failure
+        <input type="checkbox" @change="updateFunc" v-model="includeFailure"> Failure
     </div>
 </template>
 
@@ -22,7 +19,9 @@ export default {
     return {
       minTime: 0,
       maxTime: 1000000,
-      testStatus: "all",
+      includeSuccess: true,
+      includePartial: true,
+      includeFailure: true,
       func: () => true
     };
   },
@@ -31,7 +30,9 @@ export default {
       this.func = testClass =>
         testClass.totalTime >= this.minTime &&
         testClass.totalTime <= this.maxTime &&
-        (testClass.testStatus == this.testStatus || this.testStatus == "all");
+        (testClass.testStatus == "success" && this.includeSuccess ||
+        testClass.testStatus == "partial" && this.includePartial ||
+        testClass.testStatus == "failure" && this.includeFailure)
       this.$emit("changed", this.func);
     }
   }
