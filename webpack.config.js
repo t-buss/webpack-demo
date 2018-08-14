@@ -35,5 +35,6 @@ module.exports = {
 			template: 'src/index_template.html'
 		}),
 		new HtmlWebpackInlineSourcePlugin()
-	]
+	],
+	devtool: '#eval-source-map'
 };

@@ -1,26 +1,40 @@
 <template>
   <div id="app">
-    <h1>\{{ msg }}</h1>
-    <p>Glass icon on a button:
-      <button type="button" class="btn btn-primary">
-	<i class="material-icons">android</i>
-      </button>
-    <Item />
-    </p>
+    <TestClassSorter @changed="sortFunction = $event"/>
+    <TestClassFilter @changed="filterFunction = $event"/>
+    <div v-for="testClass in filteredAndSorted">
+      <p>name: {{ testClass.name }}, totalTime: {{ testClass.totalTime }}, testStatus: {{ testClass.testStatus }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import Item from './Item.vue'
+import TestClassSorter from './TestClassSorter.vue'
+import TestClassFilter from './TestClassFilter.vue'
+
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      testClasses: [
+        { totalTime: 1, testStatus: "success", name: "testC" },
+        { totalTime: 2, testStatus: "failure", name: "testA" },
+        { totalTime: 3, testStatus: "partial", name: "testB" },
+      ],
+      sortFunction: () => -1,
+      filterFunction: () => true
     }
   },
+  computed: {
+    filteredAndSorted: function() {
+	return this.testClasses
+		.filter(this.filterFunction)
+		.sort(this.sortFunction)
+	}
+  },
   components: {
-    Item
+    TestClassSorter,
+    TestClassFilter
   }
 }
 </script>
