@@ -14,13 +14,9 @@ import TestClassFilter from "./components/TestClassFilter.vue";
 
 export default {
   name: "app",
+  props: ["testClasses"],
   data() {
     return {
-      testClasses: [
-        { totalTime: 1, testStatus: "success", name: "testC" },
-        { totalTime: 2, testStatus: "failure", name: "testA" },
-        { totalTime: 3, testStatus: "partial", name: "testB" }
-      ],
       sortFunction: () => -1,
       filterFunction: () => true
     };
