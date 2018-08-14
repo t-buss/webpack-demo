@@ -16,31 +16,31 @@
 
 <script>
 export default {
-    data() {
-        return {
-            sortByValue: "name",
-            ascending: true,
-            func: (a, b) => a.name.localeCompare(b.name)
-        }
-    },
-    created: function() {
-      this.$emit("changed", this.func)
-    },
-    methods: {
-        updateFunc: function() {
-            switch (this.sortByValue) {
-                case "name":
-                    this.func = (a, b) => a.name.localeCompare(b.name)
-                    break
-                case "totalDuration":
-                    this.func = (a, b) => a.totalTime < b.totalTime ? -1 : a.totalTime == b.totalTime ? 0 : 1
-            }
-            this.$emit("changed", this.ascending ? this.func : (a, b) => -1 * this.func(a, b))
-        }
+  data() {
+    return {
+      sortByValue: "name",
+      ascending: true,
+      func: (a, b) => a.name.localeCompare(b.name)
+    };
+  },
+  created: function() {
+    this.$emit("changed", this.func);
+  },
+  methods: {
+    updateFunc: function() {
+      switch (this.sortByValue) {
+        case "name":
+          this.func = (a, b) => a.name.localeCompare(b.name);
+          break;
+        case "totalDuration":
+          this.func = (a, b) =>
+            a.totalTime < b.totalTime ? -1 : a.totalTime == b.totalTime ? 0 : 1;
+      }
+      this.$emit(
+        "changed",
+        this.ascending ? this.func : (a, b) => -1 * this.func(a, b)
+      );
     }
-}
+  }
+};
 </script>
-
-<style scoped>
-</style>
-

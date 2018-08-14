@@ -18,27 +18,22 @@
 
 <script>
 export default {
-    data() {
-        return {
-            minTime: 0,
-            maxTime: 1000000,
-            testStatus: "all",
-            func: () => true
-        }
-    },
-    methods: {
-        updateFunc: function() {
-            this.func = (testClass) => 
-                testClass.totalTime >= this.minTime &&
-                testClass.totalTime <= this.maxTime &&
-                (testClass.testStatus == this.testStatus || this.testStatus == "all")
-            this.$emit("changed", this.func)
-        }
+  data() {
+    return {
+      minTime: 0,
+      maxTime: 1000000,
+      testStatus: "all",
+      func: () => true
+    };
+  },
+  methods: {
+    updateFunc: function() {
+      this.func = testClass =>
+        testClass.totalTime >= this.minTime &&
+        testClass.totalTime <= this.maxTime &&
+        (testClass.testStatus == this.testStatus || this.testStatus == "all");
+      this.$emit("changed", this.func);
     }
-}
+  }
+};
 </script>
-
-<style scoped>
-
-</style>
-

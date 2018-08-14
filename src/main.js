@@ -3,7 +3,7 @@ import Vue from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 new Vue({
-	  el: '#app',
-	  render: h => h(App)
+    el: '#app',
+    render: h => h(App)
 })
 
