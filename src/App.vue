@@ -2,15 +2,15 @@
   <div id="app">
     <TestClassSorter @changed="sortFunction = $event"/>
     <TestClassFilter @changed="filterFunction = $event"/>
-    <div v-for="testClass in filteredAndSorted">
+    <div v-for="testClass in filteredAndSorted" v-bind:key="testClass.name">
       <p>{{ testClass }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import TestClassSorter from './TestClassSorter.vue'
-import TestClassFilter from './TestClassFilter.vue'
+import TestClassSorter from './components/TestClassSorter.vue'
+import TestClassFilter from './components/TestClassFilter.vue'
 
 export default {
   name: 'app',
