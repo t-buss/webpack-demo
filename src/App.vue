@@ -3,7 +3,7 @@
     <TestClassSorter @changed="sortFunction = $event"/>
     <TestClassFilter @changed="filterFunction = $event"/>
     <div v-for="testClass in filteredAndSorted">
-      <p>name: {{ testClass.name }}, totalTime: {{ testClass.totalTime }}, testStatus: {{ testClass.testStatus }}</p>
+      <p>{{ testClass }}</p>
     </div>
   </div>
 </template>
