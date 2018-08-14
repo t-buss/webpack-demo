@@ -8,6 +8,10 @@ var testClasses = [
   { totalTime: 3, testStatus: "partial", name: "testB" }
 ]
 
+// Replace dummy data with real one if content of this variable is set (see index.html)
+if (OVERRIDE_TEST_CLASSES.length > 0)
+  testClasses = OVERRIDE_TEST_CLASSES
+
 new Vue({
   el: '#app',
   render: h => h(App, {
