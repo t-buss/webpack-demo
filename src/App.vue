@@ -5,12 +5,14 @@
     <div v-for="testClass in filteredAndSorted" v-bind:key="testClass.name">
       <p>{{ testClass }}</p>
     </div>
+    <OverviewChart v-bind:chartId="'someChart'" :data="{}" />
   </div>
 </template>
 
 <script>
 import TestClassSorter from "./components/TestClassSorter.vue";
 import TestClassFilter from "./components/TestClassFilter.vue";
+import OverviewChart from "./components/OverviewChart.vue";
 
 export default {
   name: "app",
@@ -30,7 +32,8 @@ export default {
   },
   components: {
     TestClassSorter,
-    TestClassFilter
+    TestClassFilter,
+    OverviewChart
   }
 };
 </script>

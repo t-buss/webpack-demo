@@ -11,6 +11,10 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
     },
+    externals: {
+        "plotly.js": "Plotly",
+        "vue": "Vue"
+    },
     module: {
         rules: [
             {
