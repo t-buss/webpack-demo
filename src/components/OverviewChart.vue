@@ -59,6 +59,7 @@ export default {
   },
   beforeDestroy: function() {
     window.removeEventListener("resize", this.handleResize);
+    Plotly.purge(this.chartId)
   },
   methods: {
     handleResize: function() {
