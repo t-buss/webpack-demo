@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <TestClassSorter @changed="sortFunction = $event"/>
-    <TestClassFilter @changed="filterFunction = $event"/>
+    <test-class-sorter @changed="sortFunction = $event"/>
+    <test-class-filter @changed="filterFunction = $event"/>
     <div v-for="testClass in filteredAndSorted" v-bind:key="testClass.name">
       <p>{{ testClass }}</p>
     </div>
-    <OverviewChart v-bind:chartId="'someChart'" :data="{}" />
+    <overview-chart v-bind:chartId="'someChart'" :data="{}" />
   </div>
 </template>
 
